@@ -42,7 +42,7 @@ ul li label {
    cursor: pointer;
 }
 
-#submitBtn {
+button {
    padding: 10px;
    text-align: center;
    background-color: purple;
@@ -53,6 +53,6 @@ ul li label {
    transition: .3s ease;
 }
 
-.submitBtn:hover {
+button:hover {
    background-color: rgb(102, 2, 102);
 }

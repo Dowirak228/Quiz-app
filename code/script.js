@@ -34,13 +34,16 @@ const quizData = [
 ];
 
 const questionEl = document.getElementById("question")
+const quiz = document.getElementById("quiz")
 const a_textEl = document.getElementById("a_text")
 const b_textEl = document.getElementById("b_text")
 const c_textEl = document.getElementById("c_text")
 const d_textEl = document.getElementById("d_text")
 const submitBtnEl = document.getElementById("submitBtn")
+const answerEls = document.querySelectorAll(".answer")
 
 let currentQuiz = 0;
+let score = 0;
 
 loadQuiz();
 
@@ -53,16 +56,36 @@ function loadQuiz() {
    b_textEl.innerText = currentQuizData.b
    c_textEl.innerText = currentQuizData.c
    d_textEl.innerText = currentQuizData.d
-
-   currentQuiz++;
 };
+
+function getSelected() {
+   let answer = undefined;
+
+   answerEls.forEach((answerEl) => {
+      if (answerEl.checked) {
+         answer = answerEl.id
+      }
+   })
+   return answer;
+}
 
 
 submitBtnEl.addEventListener('click', () => {
 
-   if (currentQuiz < quizData.length) {
-      loadQuiz();
-   } else {
-      alert("You finished quiz")
+   const answer = getSelected()
+
+   if (answer) {
+      if (answer === quizData[currentQuiz].correct) {
+         score++;
+      }
+      currentQuiz++;
+      if (currentQuiz < quizData.length) {
+         loadQuiz();
+      } else {
+         quiz.innerHTML = `<h2>Your score is ${score}.
+         Congrats</h2>
+         <button onclick="location.reload()">Reload</button>
+         `
+      }
    }
 })
