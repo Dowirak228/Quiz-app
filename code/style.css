@@ -42,7 +42,7 @@ ul li label {
    cursor: pointer;
 }
 
-.submitBtn {
+#submitBtn {
    padding: 10px;
    text-align: center;
    background-color: purple;
