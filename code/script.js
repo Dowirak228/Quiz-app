@@ -48,7 +48,7 @@ let score = 0;
 loadQuiz();
 
 function loadQuiz() {
-
+   deselectRadio()
    const currentQuizData = quizData[currentQuiz];
    
    questionEl.innerText = currentQuizData.question
@@ -69,6 +69,11 @@ function getSelected() {
    return answer;
 }
 
+function deselectRadio() {
+   answerEls.forEach((answerEl) => {
+      answerEl.checked = false
+   })
+}
 
 submitBtnEl.addEventListener('click', () => {
 
